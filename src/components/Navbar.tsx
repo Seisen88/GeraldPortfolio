@@ -104,8 +104,8 @@ export default function Navbar() {
             className="text-lg md:text-xl font-extrabold tracking-wider flex items-center gap-0.5 transition-opacity hover:opacity-90 font-mono"
             aria-label="Back to top"
           >
-            <span className="text-[#f5efe4]">GERALD</span>
-            <span className="gold-text">.VA</span>
+            <span className="text-[#f5efe4]">GERALD VA</span>
+            <span className="gold-text">.ECOM</span>
           </a>
 
           {/* Desktop Navigation Links */}

@@ -18,17 +18,23 @@ export function EditableText({
   placeholder?: string;
 }) {
   const ref = useRef<HTMLElement>(null);
+  const isFocused = useRef(false);
 
   useEffect(() => {
     // Resync DOM text when the value changes externally (e.g. a sibling list item
     // was removed and this instance now represents different data at the same index).
     // Skip while focused so we don't clobber in-progress typing.
-    if (ref.current && document.activeElement !== ref.current && ref.current.textContent !== value) {
+    if (ref.current && !isFocused.current && ref.current.textContent !== value) {
       ref.current.textContent = value;
     }
   }, [value]);
 
+  const handleFocus = () => {
+    isFocused.current = true;
+  };
+
   const handleBlur = () => {
+    isFocused.current = false;
     const text = ref.current?.textContent ?? "";
     if (text !== value) onCommit(text);
   };
@@ -51,10 +57,13 @@ export function EditableText({
       ref={ref}
       contentEditable
       suppressContentEditableWarning
+      onFocus={handleFocus}
       onBlur={handleBlur}
       onKeyDown={handleKeyDown}
       data-placeholder={placeholder}
       className={`${className} ${multiline ? "whitespace-pre-wrap" : ""} outline outline-dashed outline-1 outline-[#e8b654]/30 hover:outline-[#e8b654]/60 focus:outline-2 focus:outline-[#e8b654] focus:bg-[#e8b654]/5 rounded-sm px-0.5 -mx-0.5 cursor-text transition-colors empty:before:content-[attr(data-placeholder)] empty:before:text-[#5c5142]`}
-    />
+    >
+      {value}
+    </Tag>
   );
 }
