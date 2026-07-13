@@ -46,6 +46,8 @@ export interface Service {
 }
 
 export interface ContactInfo {
+  heading: string;
+  blurb: string;
   email: string;
   phone?: string;
   address?: string;
@@ -118,6 +120,9 @@ export const defaultPortfolioData: PortfolioData = {
         { name: "CapCut", icon: "Scissors" },
         { name: "Adobe Premiere Pro", icon: "Clapperboard" },
         { name: "TikTok", icon: "Music2" },
+        { name: "AutoDS", icon: "Bot" },
+        { name: "Easync", icon: "Repeat" },
+        { name: "ZikAnalytics", icon: "TrendingUp" },
       ],
     },
   ],
@@ -141,45 +146,52 @@ export const defaultPortfolioData: PortfolioData = {
   servicesQuote: "I believe that a well-managed online store is built on consistency, accuracy, and attention to detail. Whether it's researching products, optimizing listings, maintaining inventory, or processing orders, I'm committed to delivering organized, reliable support that helps businesses operate more efficiently and create a better shopping experience for their customers.",
   experiences: [
     {
-      company: "Self-Employed",
-      role: "Freelance Full-Stack Developer",
-      duration: "March 2026",
-      location: "Remote",
-      description: "Developed client websites and delivered full project cycles from requirements gathering to deployment.",
+      company: "VA eCommerce Platform",
+      role: "E-Commerce Specialist",
+      duration: "October 2024 – June 2026",
+      location: "Remote — US, AU Clients",
+      description: "Managed end-to-end eCommerce operations for international clients, from product research to order fulfillment.",
       highlights: [
-        "Delivered an icon library platform with customizable icons for a client.",
-        "Built an architectural thesis portfolio featuring interactive floor plans and construction timelines.",
-        "Collaborated directly with clients to gather requirements, iterate on feedback, and meet deadlines.",
+        "Researches high-demand & profitable products, analyzes market trends, and sources reliable suppliers.",
+        "Creates clear, compelling product descriptions that highlight features, benefits, and value to inform customers and drive sales.",
+        "Accurately enters, updates, and maintains data while ensuring quality and efficiency.",
+        "Manages order processing, fulfillment, and shipment while ensuring accuracy and efficiency.",
       ],
-      tags: ["React", "Next.js", "TypeScript", "Tailwind CSS", "PHP"],
+      tags: ["Product Research", "Order Fulfillment", "Data Entry", "Market Analysis"],
     },
     {
-      company: "University of St. La Salle – Guidance Office",
-      role: "University Intern",
-      duration: "January 2026 – May 2026",
+      company: "McDonald's Philippines",
+      role: "Department Manager",
+      duration: "February 2013 – April 2024",
       location: "Bacolod City, Philippines",
-      description: "Supported daily operations of the Guidance Office through data management and technical maintenance.",
+      description: "Oversaw daily store operations, inventory, and staff training to maintain consistent service quality and operational efficiency.",
       highlights: [
-        "Encoded and managed enrollment records for incoming students, including intake interview data and university profile information.",
-        "Monitored and maintained counselors' workstations, performing PC debugging and troubleshooting to ensure uninterrupted daily operations.",
+        "Managed daily store operations, ensuring high-quality service, food safety compliance, and efficient team performance.",
+        "Oversaw inventory, product ordering, and stock monitoring (frozen, dry, and fast-moving items) to maintain operational efficiency.",
+        "Trained and supervised staff on SOPs and quality standards to ensure consistency and excellent customer service.",
       ],
-      tags: ["Technical Support", "Data Management", "PC Troubleshooting"],
+      tags: ["Team Leadership", "Inventory Management", "Operations", "Training & SOPs"],
     },
     {
-      company: "Self-Employed",
-      role: "Freelance Network Technician",
-      duration: "2021 – Present",
-      location: "Bacolod City, Philippines",
-      description: "Installed and configured network infrastructure for residential clients across Bacolod.",
+      company: "Teletech Customer Care Inc.",
+      role: "Technical Support Representative",
+      duration: "July 2011 – January 2013",
+      location: "Philippines",
+      description: "Delivered remote technical support and documented customer issues to maintain high satisfaction.",
       highlights: [
-        "Installed fiber optic internet connections across residential areas, running and terminating cables from ISP drop points to individual homes.",
-        "Configured and deployed point-to-point wireless links using Ubiquiti Gen2 and Gen3 antennas to extend network connectivity between locations.",
+        "Provided technical support using remote tools (LogMeIn).",
+        "Resolved software and hardware issues efficiently.",
+        "Documented customer issues, solutions, and service records.",
+        "Maintained high customer satisfaction through timely support.",
       ],
-      tags: ["Fiber Optic", "Ubiquiti", "Networking", "P2P Wireless"],
+      tags: ["Technical Support", "Remote Tools", "Customer Service", "Documentation"],
     },
   ],
   projects: [],
   contact: {
+    heading: "Need help running your online store?",
+    blurb:
+      "I'm currently accepting new eCommerce VA engagements, freelance contracts, and long-term store management roles. Drop a line, and let's get your store running smoothly.",
     email: "geralppongos.sgp@gmail.com",
     phone: "+63 9310603505",
     address: "Bacolod City, Philippines",

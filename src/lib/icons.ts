@@ -17,6 +17,7 @@ import {
   Clapperboard,
   Music2,
   Search,
+  TrendingUp,
 } from "lucide-react";
 import type { ComponentType } from "react";
 
@@ -40,6 +41,7 @@ export const toolIconMap: Record<string, IconComponent> = {
   Scissors,
   Clapperboard,
   Music2,
+  TrendingUp,
 };
 
 export const serviceIconMap: Record<string, IconComponent> = {

@@ -10,7 +10,7 @@ export default function Contact() {
   const portfolioData = usePortfolioData();
   const isEditing = useIsEditing();
   const update = useUpdatePortfolioData();
-  const { email, phone, address, messagePlaceholder } = portfolioData.contact;
+  const { heading, blurb, email, phone, address, messagePlaceholder } = portfolioData.contact;
 
   const [formData, setFormData] = useState({
     name: "",
@@ -84,13 +84,27 @@ export default function Contact() {
           {/* Left Column: Contact details */}
           <div className="lg:col-span-5 flex flex-col justify-between space-y-12">
             <div className="space-y-6">
-              <h4 className="text-2xl font-bold tracking-tight text-[#f5efe4]">
-                Need help running your online store?
-              </h4>
-              <p className="text-[#a89a83] leading-relaxed text-base md:text-lg">
-                I&apos;m currently accepting new eCommerce VA engagements, freelance contracts, and long-term store
-                management roles. Drop a line, and let&apos;s get your store running smoothly.
-              </p>
+              {isEditing ? (
+                <EditableText
+                  as="h4"
+                  value={heading}
+                  className="text-2xl font-bold tracking-tight text-[#f5efe4]"
+                  onCommit={(v) => updateContact({ heading: v })}
+                />
+              ) : (
+                <h4 className="text-2xl font-bold tracking-tight text-[#f5efe4]">{heading}</h4>
+              )}
+              {isEditing ? (
+                <EditableText
+                  as="p"
+                  multiline
+                  value={blurb}
+                  className="text-[#a89a83] leading-relaxed text-base md:text-lg"
+                  onCommit={(v) => updateContact({ blurb: v })}
+                />
+              ) : (
+                <p className="text-[#a89a83] leading-relaxed text-base md:text-lg">{blurb}</p>
+              )}
             </div>
 
             <div className="space-y-6">
