@@ -52,7 +52,7 @@ export default function Services() {
         <motion.div
           className="grid grid-cols-1 md:grid-cols-3 gap-6"
           variants={containerVariants}
-          initial="hidden"
+          initial={isEditing ? "visible" : "hidden"}
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
         >

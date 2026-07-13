@@ -84,7 +84,7 @@ export default function Skills() {
               <motion.div
                 className="flex flex-wrap gap-3"
                 variants={containerVariants}
-                initial="hidden"
+                initial={isEditing ? "visible" : "hidden"}
                 whileInView="visible"
                 viewport={{ once: true, margin: "-80px" }}
               >
