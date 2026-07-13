@@ -11,6 +11,7 @@ export interface PersonalInfo {
     linkedin?: string;
     twitter?: string;
     facebook?: string;
+    instagram?: string;
     telegram?: string;
     discord?: string;
     email?: string;
@@ -85,6 +86,7 @@ export const defaultPortfolioData: PortfolioData = {
     socials: {
       linkedin: "https://www.linkedin.com/in/geraldpongos29777",
       facebook: "https://www.facebook.com/geraldpongos.sgp",
+      instagram: "https://www.instagram.com/qeraldponqos_/",
       email: "geralppongos.sgp@gmail.com",
     },
     stats: [

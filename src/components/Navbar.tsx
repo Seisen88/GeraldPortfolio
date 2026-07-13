@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import { Linkedin, Facebook } from "./icons";
+import { Linkedin, Facebook, Instagram } from "./icons";
 import { usePortfolioData, useIsEditing, useUpdatePortfolioData } from "./PortfolioProvider";
 import { EditableText } from "./editing/EditableText";
 
@@ -140,35 +140,19 @@ export default function Navbar() {
           {/* Socials / Action Button */}
           <div className="hidden md:flex items-center space-x-4">
             {isEditing ? (
-              <div className="flex items-center gap-3">
-                <div className="flex items-center gap-1.5">
-                  <Linkedin size={14} className="text-[#a89a83] shrink-0" />
-                  <EditableText
-                    value={portfolioData.personalInfo.socials.linkedin || ""}
-                    placeholder="LinkedIn URL"
-                    className="text-[10px] font-mono text-[#a89a83] max-w-[130px] inline-block"
-                    onCommit={(v) =>
-                      update((d) => ({
-                        ...d,
-                        personalInfo: { ...d.personalInfo, socials: { ...d.personalInfo.socials, linkedin: v } },
-                      }))
-                    }
-                  />
-                </div>
-                <div className="flex items-center gap-1.5">
-                  <Facebook size={14} className="text-[#a89a83] shrink-0" />
-                  <EditableText
-                    value={portfolioData.personalInfo.socials.facebook || ""}
-                    placeholder="Facebook URL"
-                    className="text-[10px] font-mono text-[#a89a83] max-w-[130px] inline-block"
-                    onCommit={(v) =>
-                      update((d) => ({
-                        ...d,
-                        personalInfo: { ...d.personalInfo, socials: { ...d.personalInfo.socials, facebook: v } },
-                      }))
-                    }
-                  />
-                </div>
+              <div className="flex items-center gap-1.5">
+                <Linkedin size={14} className="text-[#a89a83] shrink-0" />
+                <EditableText
+                  value={portfolioData.personalInfo.socials.linkedin || ""}
+                  placeholder="LinkedIn URL"
+                  className="text-[10px] font-mono text-[#a89a83] max-w-[160px] inline-block"
+                  onCommit={(v) =>
+                    update((d) => ({
+                      ...d,
+                      personalInfo: { ...d.personalInfo, socials: { ...d.personalInfo.socials, linkedin: v } },
+                    }))
+                  }
+                />
               </div>
             ) : (
               portfolioData.personalInfo.socials.linkedin && (
@@ -267,34 +251,101 @@ export default function Navbar() {
       </AnimatePresence>
 
       {/* Floating Left Social Bar (Desktop Only) */}
-      <div className="fixed left-6 top-1/2 -translate-y-1/2 z-50 hidden lg:flex flex-col items-center gap-4 bg-transparent select-none">
-        <div className="w-1.5 h-1.5 rounded-full bg-[#e8b654] shadow-[0_0_8px_rgba(232,182,84,0.5)] animate-pulse" />
-        {portfolioData.personalInfo.socials.linkedin && (
-          <a
-            href={portfolioData.personalInfo.socials.linkedin}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group relative flex items-center justify-center w-7 h-7 rounded-full text-[#a89a83] hover:text-[#050403] hover:bg-[#e8b654] hover:scale-125 transition-all duration-200"
-          >
-            <Linkedin size={14} />
-            <span className="absolute left-8 top-1/2 -translate-y-1/2 px-2 py-0.5 gold-fill text-[#050403] text-[9px] font-mono font-bold tracking-wider rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none">
-              LinkedIn
-            </span>
-          </a>
+      <div
+        className={`fixed left-6 top-1/2 -translate-y-1/2 z-50 hidden lg:flex flex-col items-center select-none ${
+          isEditing ? "gap-3 items-start" : "gap-4"
+        }`}
+      >
+        {!isEditing && (
+          <div className="w-1.5 h-1.5 rounded-full bg-[#e8b654] shadow-[0_0_8px_rgba(232,182,84,0.5)] animate-pulse" />
         )}
-        {portfolioData.personalInfo.socials.facebook && (
-          <a
-            href={portfolioData.personalInfo.socials.facebook}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group relative flex items-center justify-center w-7 h-7 rounded-full text-[#a89a83] hover:text-[#050403] hover:bg-[#e8b654] hover:scale-125 transition-all duration-200"
-          >
-            <Facebook size={14} />
-            <span className="absolute left-8 top-1/2 -translate-y-1/2 px-2 py-0.5 gold-fill text-[#050403] text-[9px] font-mono font-bold tracking-wider rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none">
-              Facebook
-            </span>
-          </a>
+
+        {isEditing ? (
+          <>
+            {portfolioData.personalInfo.socials.linkedin && (
+              <a
+                href={portfolioData.personalInfo.socials.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center w-7 h-7 rounded-full text-[#a89a83] hover:text-[#050403] hover:bg-[#e8b654] transition-all duration-200"
+                aria-label="LinkedIn Profile (edit URL in the header above)"
+              >
+                <Linkedin size={14} />
+              </a>
+            )}
+            <div className="flex items-center gap-1.5 bg-[#0d0b09] border border-[#2a231a] rounded-full pl-2 pr-3 py-1">
+              <Facebook size={13} className="text-[#a89a83] shrink-0" />
+              <EditableText
+                value={portfolioData.personalInfo.socials.facebook || ""}
+                placeholder="Facebook URL"
+                className="text-[10px] font-mono text-[#a89a83] max-w-[140px] inline-block"
+                onCommit={(v) =>
+                  update((d) => ({
+                    ...d,
+                    personalInfo: { ...d.personalInfo, socials: { ...d.personalInfo.socials, facebook: v } },
+                  }))
+                }
+              />
+            </div>
+            <div className="flex items-center gap-1.5 bg-[#0d0b09] border border-[#2a231a] rounded-full pl-2 pr-3 py-1">
+              <Instagram size={13} className="text-[#a89a83] shrink-0" />
+              <EditableText
+                value={portfolioData.personalInfo.socials.instagram || ""}
+                placeholder="Instagram URL"
+                className="text-[10px] font-mono text-[#a89a83] max-w-[140px] inline-block"
+                onCommit={(v) =>
+                  update((d) => ({
+                    ...d,
+                    personalInfo: { ...d.personalInfo, socials: { ...d.personalInfo.socials, instagram: v } },
+                  }))
+                }
+              />
+            </div>
+          </>
+        ) : (
+          <>
+            {portfolioData.personalInfo.socials.linkedin && (
+              <a
+                href={portfolioData.personalInfo.socials.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative flex items-center justify-center w-7 h-7 rounded-full text-[#a89a83] hover:text-[#050403] hover:bg-[#e8b654] hover:scale-125 transition-all duration-200"
+              >
+                <Linkedin size={14} />
+                <span className="absolute left-8 top-1/2 -translate-y-1/2 px-2 py-0.5 gold-fill text-[#050403] text-[9px] font-mono font-bold tracking-wider rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none">
+                  LinkedIn
+                </span>
+              </a>
+            )}
+            {portfolioData.personalInfo.socials.facebook && (
+              <a
+                href={portfolioData.personalInfo.socials.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative flex items-center justify-center w-7 h-7 rounded-full text-[#a89a83] hover:text-[#050403] hover:bg-[#e8b654] hover:scale-125 transition-all duration-200"
+              >
+                <Facebook size={14} />
+                <span className="absolute left-8 top-1/2 -translate-y-1/2 px-2 py-0.5 gold-fill text-[#050403] text-[9px] font-mono font-bold tracking-wider rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none">
+                  Facebook
+                </span>
+              </a>
+            )}
+            {portfolioData.personalInfo.socials.instagram && (
+              <a
+                href={portfolioData.personalInfo.socials.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative flex items-center justify-center w-7 h-7 rounded-full text-[#a89a83] hover:text-[#050403] hover:bg-[#e8b654] hover:scale-125 transition-all duration-200"
+              >
+                <Instagram size={14} />
+                <span className="absolute left-8 top-1/2 -translate-y-1/2 px-2 py-0.5 gold-fill text-[#050403] text-[9px] font-mono font-bold tracking-wider rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none">
+                  Instagram
+                </span>
+              </a>
+            )}
+          </>
         )}
+
         <div className="w-px h-6 bg-[#2a231a]" />
         <span className="text-[9px] font-mono tracking-[0.2em] uppercase text-[#5c5142] hover:text-[#e8b654] -rotate-90 whitespace-nowrap mt-2 transition-colors duration-200 cursor-default">
           SOCIAL
