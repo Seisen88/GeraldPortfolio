@@ -101,14 +101,11 @@ export default function Navbar() {
           <a
             href="#hero"
             onClick={(e) => handleLinkClick(e, "#hero")}
-            className="flex flex-col leading-[1.15] font-extrabold tracking-wider transition-opacity hover:opacity-90 font-mono"
+            className="flex items-center gap-1 whitespace-nowrap font-extrabold tracking-wider transition-opacity hover:opacity-90 font-mono text-sm md:text-lg shrink-0"
             aria-label="Back to top"
           >
-            <span className="text-sm md:text-base text-[#f5efe4]">GERALD</span>
-            <span className="text-sm md:text-base flex items-center gap-1">
-              <span className="text-[#f5efe4]">VA</span>
-              <span className="gold-text">.ECOM</span>
-            </span>
+            <span className="text-[#f5efe4]">GERALD VA</span>
+            <span className="gold-text">.ECOM</span>
           </a>
 
           {/* Desktop Navigation Links */}
